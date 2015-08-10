@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Donut Shop Simulator</title>
+	<script>
+
+		function DonutShop (location,minCustomers,maxCustomers,avgDonuts) {
+		this.location = location;
+		this.minCustomers = minCustomers;
+		this.maxCustomers = maxCustomers;
+		this.avgDonuts = avgDonuts;
+			this.calcDonuts = function() {
+				var hoursOpen = document.getElementById("hours").value;
+				totalHours = hoursOpen;
+				for(var i=0;i<hoursOpen;i++){
+				return Math.round(Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + (this.minCustomers) * (this.avgDonuts)*(hoursOpen));
+				};
+			};
+		};
+
+var downTown = new DonutShop('Downtown',8,43,4.5);
+var capitolHill = new DonutShop('Capitol Hill',4,37,2);
+var southLakeUnion = new DonutShop('South Lake Union',9,23,6.33);
+var wedgewood = new DonutShop('Wedgewood',2,28,1.25);
+var ballard = new DonutShop('Ballard',8,58,3.75);
+var stores = [downTown,capitolHill,southLakeUnion,wedgewood,ballard];
+var totalHours = 0;
+
+	function shopSelect(shop){
+		var totalDonuts = shop.calcDonuts();
+
+			console.log("If the " + shop.location + " shop is open for " + totalHours + " hours, the shop needs to make approximately " + totalDonuts + " donuts today.")
+			console.log("That is an average of " + Math.round(totalDonuts/totalHours) + " donuts per hour");
+
+	};
+
+	for(i=0;i<stores.length;i++) {
+	shopSelect(stores[i]);
+	};
+	
+</script>
+<style>
+#header {
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100vw;
+	height:15vh;
+	color:#CCC;
+	background:#333;
+	padding:20px;
+	text-align: center;
+	border-bottom:	#CCC solid 3px;
+}
+
+#footer {
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	margin-left: 0;
+
+	width:100vw;
+	color:#CCC;
+	background:#333;
+	padding:8px;
+	text-align: center;
+	border-top:	#CCC solid 3px;
+}
+#left {
+	
+	color:#CCC;
+	background:#333;
+	height:100vh;
+	width:25vw;
+	left:0;
+
+	float:left;
+}
+#right {
+	
+	height:200px;
+	width: 180px;
+	float:right;
+	margin-right: 30%;
+	margin-top: 20%;
+	border:	#CCC solid 3px;
+	background-color:#333;
+}
+body {
+	background-repeat:no-repeat;
+    background-size:100%;
+	background-image: url("http://i.imgur.com/fePK5.png");
+	padding:0;
+	margin:0;
+}
+div p {
+	padding:14px;
+	font-weight: bold;
+}
+table {
+		border-collapse:collapse;
+		text-align: center;
+		 margin: 0 auto;
+}
+td{
+	border-collapse:collapse;
+
+	border:	#CCC solid 3px;
+
+}
+ul{
+	list-style-type: none;
+}
+input[type="textarea"] {
+	margin-top:5px;
+	margin-left:13%;
+	text-align: center;
+
+}
+
+
+
+</style>
+
+	</head>
+
+		<body>
+			<div id="header"><h1>Andrew's Page of Donuts!</h1><h3>The donut shop simulator</h3></div>
+			<div id="left"><br><br><br><br><br><br><br><p>Welcome to Andrew's donut shop simulator. In the textbox to right, enter how many hours the shop is open for today. After determing the hours, click on which donut shop you would like to simulate. For each hour the donut shop is open, the program uses information from the table below to determine how many donuts should be made. The program takes a random number of customers within the minimum and maximum ranges predetermined for each of the different donut shops in the table. It then multiplies this number by the average number of donuts per customer. This is done x amount of times and gives the user a total estimate of how many donuts should be made for the entire day and also gives an average of how many donuts per hour the shop will need. This is displayed in the console log.</p>	
+				<table>
+					<tr>
+						<td>Location</td><td>Min Cust</td><td>Max Cust</td><td>Avg Donuts</td>
+					</tr>
+					<tr>
+						<td>Capitol Hill</td><td>4</td><td>37</td><td>2</td>
+					</tr>
+					<tr>
+						<td>South Lake Union</td><td>9</td><td>23</td><td>6.33</td>
+					</tr>
+					<tr>
+						<td>Wedgewood</td><td>2</td><td>28</td><td>1.25</td>
+					</tr>
+					<tr>
+						<td>Ballard</td><td>8</td><td>58</td><td>3.75</td>
+					</tr>
+					<tr>
+						<td>Downtown</td><td>8</td><td>43</td><td>4.5</td>
+					</tr>
+				</table>
+
+			</div>
+			<div id="footer">Andrew's Donuts &copy 2016 All rights reserved</div>
+
+			<div id="right">
+				<form>
+					<input display= "inline-block" type="textarea" id="hours" placeholder="Please Enter # of Hours Open" rows="2" cols="20" name="nHoursInput">
+				
+					<ul >
+						<li>
+							<input style="height:30px;width:100px" display= "inline-block" value="Downtown" type="button" onClick="shopSelect(downTown);" ></li>
+						<li>
+							<input style="height:30px;width:100px" display= "inline-block" value="Capitol Hill" type="button" onClick="shopSelect(capitolHill);"></li>
+						<li>
+							<input style="height:30px;width:100px" display= "inline-block" value="South Lake Union" type="button" onClick="shopSelect(southLakeUnion);"></li>
+						<li>
+							<input style="height:30px;width:100px" display= "inline-block" class="shopSelectButton" value="Wedgewood" type="button" onClick="shopSelect(wedgewood);"></li>
+						<li>
+							<input style="height:30px;width:100px" display= "inline-block" class="shopSelectButton" value="Ballard" type="button" onClick="shopSelect(ballard);"></li>
+					</ul>
+				</form>
+			</div>
+			
+		</body>
+</html>
